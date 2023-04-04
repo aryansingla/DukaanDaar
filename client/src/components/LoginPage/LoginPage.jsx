@@ -28,8 +28,8 @@ const LoginPage = () => {
                     </button>
                 </div>
                 <div className="newMember text-center sm:text-left w-[80%]  mt-4 m-auto flex">
-                <p class="mt-2 text-base text-gray-600 dark:text-gray-300"> Not a member?</p>
-                    <a href="/signup"  class="font-medium text-[#5f7fff] transition-all duration-200 hover:underline mt-2 px-2">Create a free account
+                <p className="mt-2 text-base text-gray-600 dark:text-gray-300"> Not a member?</p>
+                    <a href="/signup"  className="font-medium text-[#5f7fff] transition-all duration-200 hover:underline mt-2 px-2">Create a free account
                     </a>
                 </div>
             </div> 
