@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import "./LoginPage.css";
 import toast, { Toaster } from "react-hot-toast";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate , useLocation } from "react-router-dom";
 import { useAuth } from "../../context/auth";
 const LoginPage = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const[auth,setAuth]=useAuth();
@@ -21,7 +22,7 @@ const LoginPage = () => {
                 token:res.data.token,
             });
             localStorage.setItem("auth",JSON.stringify(res.data));
-            navigate('/');
+            navigate(location.state || '/');
         } else {
             toast.error(res.data.message);
         }

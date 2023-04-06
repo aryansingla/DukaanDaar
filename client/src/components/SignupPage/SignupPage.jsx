@@ -11,10 +11,11 @@ const[email,setEmail]=useState('');
 const[password,setPassword]=useState('');
 const[address,setAddress]=useState('');
 const[phone,setPhone]=useState('');
+const[answer,setAnswer]=useState('');
 const handleSubmit = async (e)=>{
     e.preventDefault();
     try {
-        const res = await axios.post(`${process.env.REACT_APP_API}/api/v1/auth/signup`,{name,email,password,address,phone});
+        const res = await axios.post(`${process.env.REACT_APP_API}/api/v1/auth/signup`,{name,email,password,address,phone,answer});
         if(res && res.data.success){
             toast.success(res.data.message);
             navigate('/login');
@@ -57,6 +58,12 @@ const handleSubmit = async (e)=>{
                             placeholder="Address"
                             value={address}
                             onChange={(e)=>setAddress(e.target.value)}
+                            required/>
+                      <input className="flex h-10 mt-6 w-6/12 m-auto border rounded-xl border-[#ffffff] bg-[#ffffff] py-2 px-3 text-md font-medium placeholder:text-[#4d70ff] focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:opacity-50"
+                            type="text"
+                            placeholder="What is your faviroute sports ?"
+                            value={answer}
+                            onChange={(e)=>setAnswer(e.target.value)}
                             required/>
                       <input className="flex h-10 mt-6 w-6/12 m-auto border rounded-xl border-[#ffffff] bg-[#ffffff] py-2 px-3 text-md font-medium placeholder:text-[#4d70ff] focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:opacity-50"
                             type="text"
