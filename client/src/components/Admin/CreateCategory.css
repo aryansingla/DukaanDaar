@@ -1,0 +1,9 @@
+
+@media screen and (max-width: 600px) {
+    .dashboardContent{
+        flex-direction: column-reverse;
+    }  
+    .categoryContent{
+        min-height: 50vh;
+    }  
+}
