@@ -1,9 +1,9 @@
 
-@media screen and (max-width: 600px) {
+ /* @media screen and (max-width: 640px) {
     .dashboardContent{
         flex-direction: column-reverse;
     }  
-    .categoryContent{
+     .categoryContent{
         min-height: 50vh;
     }  
-}
+} */

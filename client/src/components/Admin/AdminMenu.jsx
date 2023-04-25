@@ -20,6 +20,13 @@ const AdminMenu = () => {
             </button>
         </div>
         <div>
+            <button className="  dashboardbtn mt-4 rounded-xl bg-[#4d70ff]  sm:w-[100%] sm:p-3  text-base font-semibold leading-7 text-white hover:bg-[#6581f2]" type="submit">
+                <NavLink to ="/dashboard/admin/products" class="list-group-item list-group-item-action ">
+                    All Products
+                </NavLink>
+            </button>
+        </div>
+        <div>
             <button className=" dashboardbtn mt-4 rounded-xl bg-[#4d70ff]  sm:w-[100%] sm:p-3  text-base font-semibold leading-7 text-white hover:bg-[#6581f2]" type="submit">
                 <NavLink to ="/dashboard/admin/users"  class="  list-group-item list-group-item-action">
                     Show Users
