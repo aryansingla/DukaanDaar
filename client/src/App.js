@@ -17,6 +17,8 @@ import CreateProduct from "./components/Admin/CreateProduct";
 import AllUsers from "./components/Admin/AllUsers";
 import Products from "./components/Admin/Products";
 import UpdateProduct from "./components/Admin/UpdateProduct";
+import Search from "./components/Search";
+import ProductDetails from "./components/ProductDetails";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -39,6 +41,8 @@ function App() {
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="intro" element={<IntroPage />} />
+              <Route path="/product/:slug" element={<ProductDetails />} />
+              <Route path="/search" element={<Search />} />
               <Route path="/dashboard" element={<PrivateRoute />}>
                 <Route path="user" element={<Dashboard />} />
               </Route>
