@@ -2,9 +2,12 @@ import React from 'react'
 import "./AdminDashboard.css"
 import AdminMenu from './AdminMenu'
 import { useAuth } from '../../context/auth'
+import Navbar from '../Navbar/Navbar'
 const AdminDashboard = () => {
     const [auht] = useAuth();
   return (
+    <>
+    <Navbar/>
     <div className='text-[#fff] text-center'>
         <h1 className='dashBoardTitle font-bold text-2xl mt-10'>Admin Dashboard</h1>
         <div className="dashboardContent flex">
@@ -17,6 +20,7 @@ const AdminDashboard = () => {
             </div>
         </div>
     </div>
+    </>
   )
 }
 

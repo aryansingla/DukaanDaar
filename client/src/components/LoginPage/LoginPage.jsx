@@ -40,7 +40,7 @@ const LoginPage = () => {
           <form onSubmit={handleSubmit}>
             <div className="inputDetails sm:mt-20 text-center">
               <input
-                className="flex h-10 mt-6 w-6/12 m-auto border rounded-xl border-[#ffffff] bg-[#ffffff] py-2 px-3 text-md font-medium placeholder:text-[#4d70ff] focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:opacity-50"
+                className="flex h-10 mt-6 w-6/12 m-auto border rounded-xl border-[#ffffff] bg-[#ffffff] py-2 px-3 text-md font-medium placeholder:text-[#4d70ff] focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:opacity-50 text-black"
                 type="email"
                 placeholder="Email"
                 value={email}
@@ -48,7 +48,7 @@ const LoginPage = () => {
                 required
               />
               <input
-                className="flex h-10 mt-6 w-6/12 m-auto border rounded-xl border-[#ffffff] bg-[#ffffff] py-2 px-3 text-md font-medium placeholder:text-[#4d70ff] focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:opacity-50"
+                className="flex h-10 mt-6 w-6/12 m-auto border rounded-xl border-[#ffffff] bg-[#ffffff] py-2 px-3 text-md font-medium placeholder:text-[#4d70ff] focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:opacity-50 text-black"
                 type="password"
                 placeholder="Password"
                 value={password}

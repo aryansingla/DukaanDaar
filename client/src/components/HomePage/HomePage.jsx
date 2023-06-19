@@ -5,12 +5,15 @@ import axios from "axios";
 import {Checkbox, Radio} from 'antd'
 import {FaShoppingCart, FaSpinner} from "react-icons/fa";
 import {BsFillPlusCircleFill} from "react-icons/bs";
-
+import Navbar from "../Navbar/Navbar";
 import { Prices } from "../Prices";
 import SearchInput from "../Form/SearchInput";
+import { useCart } from "../../context/cart";
+import { toast } from "react-hot-toast";
 
 const HomePage = () => {
   const [auth, setAuth] = useAuth();
+  const [cart, setCart] = useCart();
   const [products,setProducts]=useState([]);
   const [categories, setCategories]=useState([]);
   const [checked,setChecked]=useState([]);
@@ -88,6 +91,8 @@ getTotal()
         setLoading(false);
       }
     }
+
+
   //filter by cat
   const handleFilter=(value,id,name)=>{
     let all=[];
@@ -106,6 +111,8 @@ getTotal()
   useEffect(()=>{
     if(checked.length||radio.length) filterProduct()
   },[checked,radio])
+
+
   //get filtered product
   const filterProduct =async()=>{
     try {
@@ -120,216 +127,7 @@ getTotal()
   }
   return (
     <>
-    {!auth.user ?(
-        <div>
-        <nav className="relative flex items-center justify-between px-4 py-4 sm:px-8 ">
-          <a
-            className="flex justify-start "
-            href="#"
-          >
-            
-              <img  className="w-1/2 sm:w-1/3" src="logo.png" alt="logo" />
-            <div className="hidden sm:ml-2 sm:flex sm:flex-col sm:justify-center">
-            <div className="text-xl font-bold tracking-wide text-white">
-              Dukaan
-            </div>
-            <div className="-mt-1 text-lg font-semibold tracking-wide text-white">
-              Daar
-            </div></div>
-          </a>
-          <div className="md:hidden">
-            <button onClick={onHamClick} className="flex items-center p-3 text-white navbar-burger">
-              <svg
-                className="block w-6 h-6 fill-current"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <title>Mobile menu</title>
-                <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
-              </svg>
-            </button>
-          </div>
-          <ul className="hidden mr-4 md:flex md:items-center md:justify-end grow">
-            <li>
-              <NavLink
-                className="hover:text-[#4d70ff] px-4 py-2 mr-8 text-xl font-medium text-white"
-                to="/"
-              >
-                Home
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                className="hover:text-[#4d70ff] px-4 py-2 mr-8 text-xl font-medium text-white"
-                to="/signup"
-              >
-                Sign Up
-              </NavLink>
-            </li>
-            <li>
-              <NavLink
-                className="hover:text-[#4d70ff] px-4 py-2 mr-8 text-xl font-medium text-white"
-                to="/login"
-              >
-                Login
-              </NavLink>
-            </li>
-          </ul>
-         
-        </nav>
-        {/* phone */}
-    { display &&   <nav className="block md:hidden absolute bg-[#070d23] bg-opacity-90 w-full text-white">
-          <ul className="flex flex-col items-center py-4">
-          <li className="my-4 w-full text-center hover:text-[grey]" > 
-              <NavLink
-                className="hover:text-[#4d70ff] py-2 text-xl font-normal text-white"
-                to="/"
-              >
-                Home
-              </NavLink>
-            </li>
-            <li className="w-full my-4 text-center">
-              <NavLink
-                className="hover:text-[#4d70ff] py-2 text-xl font-normal text-white"
-                to="/signup"
-              >
-                Sign Up
-              </NavLink>
-            </li>
-            <li className="w-full my-4 text-center">
-              <NavLink
-                className="hover:text-[#4d70ff] py-2 text-xl font-normal text-white"
-                to="/login"
-              >
-                Login
-              </NavLink>
-            </li>
-          </ul>
-        </nav>}
-
-      </div>
-    ) :(
-      <>
-      {auth?.user?.name &&
-      <div>
-      <nav className="relative flex items-center justify-between px-8 py-4 ">
-        <a
-          className="flex justify-start "
-          href="#"
-        >
-            <img  className="w-1/2 sm:w-1/3" src="logo.png" alt="logo" />
-            <div className="hidden ml-2 sm:flex sm:flex-col sm:justify-center">
-            <div className="text-xl font-bold tracking-wide text-white">
-              Dukaan
-            </div>
-            <div className="-mt-1 text-lg font-semibold tracking-wide text-white ">
-              Daar
-            </div></div>
-        </a>
-        <div className="md:hidden">
-          <button onClick={onHamClick} className="flex items-center p-3 text-white navbar-burger">
-            <svg
-              className="block w-6 h-6 fill-current"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <title>Mobile menu</title>
-              <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"></path>
-            </svg>
-          </button>
-        </div>
-        <ul className="hidden mr-4 md:flex md:items-center md:justify-end grow">
-          <li>
-            <NavLink
-              className="hover:text-[#4d70ff] px-4 py-2 mr-8 text-xl font-medium text-white"
-              to="/"
-            >
-              Home
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              className="hover:text-[#4d70ff] px-4 py-2 mr-8 text-xl font-medium text-white"
-              to={`/dashboard/${auth?.user?.role === 1 ? 'admin':'user'}`}
-            >
-              Dashboard
-            </NavLink>
-          </li>
-          <li>
-          <NavLink to="/login">
-              <button
-                onClick={handleLogOut}
-                className="hover:text-[#4d70ff] px-4 py-2 mr-8 text-xl font-medium text-white"
-                type="submit"
-              >
-                Logout
-              </button>
-            </NavLink>
-          </li>
-          <li>
-          <NavLink to="#">
-              <button
-                className="text-white text-xl font-medium px-4 py-2 bg-[#4d70ff] hover:bg-[#6581f2] rounded-xl -mr-3"
-                type="submit"
-              >
-                <div className="flex items-center "><div className="pr-2">Cart</div> 
-                <FaShoppingCart/></div>
-                
-              </button>
-            </NavLink>
-          </li>
-        </ul>
-       
-      </nav>
-             {/* phone */}
-    { display &&  <nav className="block md:hidden  absolute bg-[#070d23] bg-opacity-90 w-full text-white">
-          <ul className="flex flex-col items-center py-4">
-          <li className="w-full my-4 text-center " > 
-              <NavLink
-                className="py-2 text-xl font-normal text-white hover:text-[#4d70ff]"
-                to="/"
-              >
-                Home
-              </NavLink>
-            </li>
-            <li className="w-full my-4 text-center">
-              <NavLink
-                className="hover:text-[#4d70ff] py-2 text-xl font-normal text-white"
-                to={`/dashboard/${auth?.user?.role === 1 ? 'admin':'user'}`}
-              >
-                Dashboard
-              </NavLink>
-            </li>
-            <li className="w-full my-4 text-center">
-              <NavLink
-                className="hover:text-[#4d70ff] py-2 text-xl font-normal text-white"
-                to="/login"
-              >
-                   <button
-                onClick={handleLogOut}
-                type="submit"
-              >
-                Logout
-              </button>
-              </NavLink>
-            </li>
-            <li>
-          <NavLink to="#">
-              <button
-                className="text-white text-xl font-medium px-4 py-2 bg-[#4d70ff] hover:bg-[#6581f2] rounded-xl"
-                type="submit"
-              >
-                <div className="flex items-center"><div className="pr-2">Cart</div> 
-                <FaShoppingCart/></div>
-                
-              </button>
-            </NavLink>
-          </li>
-          </ul>
-        </nav>}
-    </div>}
-    </>
-    ) }
+    <Navbar/>
 
 {/* Search */}
     <SearchInput/>
@@ -369,28 +167,22 @@ getTotal()
             {(!checked.length)? <h1 className='text-3xl font-semibold '>All Items</h1>: <h1 className='text-3xl font-semibold '>{categoryName}</h1>}</div>
             <div className='flex flex-row lg:pl-10 lg:justify-evenly carousel '>
                 {products?.map((p)=>(
-                //    <button onClick={()=>navigate(`/product/${p.slug}`)}>
-                //   <div className="lg:max-w-[17vw] lg:min-w-[17vw]  lg:max-h-fit lg:min-h-fit sm:max-w-[24vw] sm:min-w-[24vw]  sm:max-h-fit sm:min-h-fit max-w-[60vw] min-w-[60vw]  max-h-fit min-h-fit m-3 text-black  card bg-base-100 border-4 shadow-[0_3px_6px_6px_rgba(16,185,129,0.5)] border-emerald-400">
-                //   <div className='flex justify-center mt-2 '><img src={`${process.env.REACT_APP_API}/api/v1/product/product-photo/${p._id}`} alt="Shoes" className='sm:min-w-[100px] sm:max-w-[100px] sm:min-h-[100px] sm:max-h-[100px] min-w-[80px] max-w-[80px] min-h-[80px] max-h-[80px]' /></div>
-                //   <div className="card-body">
-                //     <h2 className="m-0 -mt-1 sm:mt-0 card-title">{p.name}</h2>
-                //     {/* <p className=''>{p.description.substring(0,10)}...</p> */}
-                //     <p className=''> $ {p.price}</p>
-                  
-                //   </div>
-                // </div>
-                // </button>
-                <button  >
-                  {/* border-4 shadow-[0_3px_6px_6px_rgba(16,185,129,0.5)] border-emerald-400 */}
+                  <button>
                 <div className=" relative lg:max-w-[12vw] lg:min-w-[12vw]  lg:max-h-fit lg:min-h-fit sm:max-w-[24vw] sm:min-w-[24vw]  sm:max-h-fit sm:min-h-fit max-w-[44vw] min-w-[44vw]  max-h-fit min-h-fit m-3 text-black rounded-3xl bg-base-100 ">
-              {  !add &&  <div onClick={addFunc} className="flex justify-end ">
-                   <button> <BsFillPlusCircleFill color="#4d70ff" size={30} className="absolute -mt-1 -ml-6"/></button>
+              { 
+              //  !add && 
+                <div onClick={addFunc} className="flex justify-end ">
+                   <button onClick={()=>{
+                    setCart([...cart,p]);
+                    localStorage.setItem("cart",JSON.stringify([...cart,p]));
+                    toast.success("item added to cart")
+                  }} > <BsFillPlusCircleFill color="#4d70ff" size={30} className="absolute -mt-1 -ml-6"/></button>
                   </div>}
-                 { add && <div onClick={addFunc} className= " p-1  items-center flex justify-evenly bg-[#4d70ff] w-[100%] h-[5vh] rounded-t-3xl absolute ">
+                 {/* { add && <div onClick={addFunc} className= " p-1  items-center flex justify-evenly bg-[#4d70ff] w-[100%] h-[5vh] rounded-t-3xl absolute ">
                    <div className="bg-white rounded w-7 h-fit">-</div>
                    <div className="text-white">1</div>
                    <div className="bg-white rounded w-7 h-fit">+</div>
-                  </div>}
+                  </div>} */}
                   
                  <button className="w-full" onClick={()=>navigate(`/product/${p.slug}`)}>
                 <div className='flex justify-center mt-2 overflow-hidden rounded-3xl'><img src={`${process.env.REACT_APP_API}/api/v1/product/product-photo/${p._id}`} alt="Shoes" className=' m-2 sm:min-w-fit sm:max-w-fit sm:min-h-[100px] sm:max-h-[100px] min-w-[80px] max-w-[80px] min-h-[80px] max-h-[80px]' /></div>
@@ -428,4 +220,3 @@ getTotal()
 };
 
 export default HomePage;
-

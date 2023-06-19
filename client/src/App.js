@@ -19,6 +19,7 @@ import Products from "./components/Admin/Products";
 import UpdateProduct from "./components/Admin/UpdateProduct";
 import Search from "./components/Search";
 import ProductDetails from "./components/ProductDetails";
+import Cart from "./components/Cart/Cart";
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -64,6 +65,7 @@ function App() {
               <Route path="signup" element={<SignupPage />} />
               <Route path="forgotPassword" element={<ForgotPassword />} />
               <Route path="profile" element={<ProfilePage />} />
+              <Route path="/cart" element={<Cart/>}/>
             </Routes>
           </BrowserRouter>
         </>
