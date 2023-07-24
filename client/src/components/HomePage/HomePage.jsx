@@ -189,7 +189,7 @@ getTotal()
                 <div className=" p-1 pt-2 pl-2 bg-[#C5C5FF] rounded-b-3xl">
                   <p className="m-0 -mt-1 font-medium text-left sm:mt-0">{p.name}</p>
                   {/* <p className=''>{p.description.substring(0,10)}...</p> */}
-                  <p className='font-normal text-left'> $ {p.price}</p>
+                  <p className='font-normal text-left'> ₹ {p.price}</p>
                 
                 </div>
                 </button>

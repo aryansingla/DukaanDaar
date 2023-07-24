@@ -3,7 +3,7 @@ import Navbar from "../Navbar/Navbar";
 import { useCart } from "../../context/cart";
 import { useAuth } from "../../context/auth";
 import { useNavigate } from "react-router-dom";
-import { AiOutlineLeft } from "react-icons/ai";
+import { AiOutlineLeft , AiFillEdit } from "react-icons/ai";
 const Cart = () => {
   const [auth, setAuth] = useAuth();
   const [cart, setCart] = useCart();
@@ -80,6 +80,33 @@ const Cart = () => {
                 <div className="text-lg">Grand Total</div>
                 <div>₹ {cart.reduce((acc, curr) => acc + curr.price, 0)}</div>
             </div>
+            {auth?.user?.address ? (
+                <>
+                  <div className="address flex justify-between pr-3">
+                    <div className="text-lg">Address</div>
+                    <p> {auth?.user?.address}</p>
+                  </div>
+                  <div className="editAddress flex"  onClick={()=> navigate("/dashboard/user")}>
+                  <p className=" text-[#4d70ff]">
+                  Edit Address </p>
+                  <AiFillEdit className=" text-[#4d70ff] mt-1 pl-2 text-2xl"/>
+                  </div>
+
+                </>
+              ):(
+                <>
+                  {auth?.token ? (
+                  <p className=" text-[#4d70ff]" onClick={()=> navigate("/dashboard/user")}>Update Address</p>
+                  ) : (
+                    <p className=" text-[#4d70ff]" 
+                    onClick={()=> navigate("/login" , {
+                        state:"/cart",
+                    })}>
+                      Please Login to Checkout</p>
+                  )}
+                </>
+              )}
+               {auth?.token ? (
             <div className="buttonInCart w-[90%] m-auto mt-4">
                 <button
                 className="btn bg-[#4d70ff]  text-[#fff] border-none w-[100%] text-md"
@@ -94,6 +121,7 @@ const Cart = () => {
                 Continue Shopping
                 </button>
             </div>
+               ):""}
         </div>
       </div>
     </>
