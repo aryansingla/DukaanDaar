@@ -10,10 +10,11 @@ import { Prices } from "../Prices";
 import SearchInput from "../Form/SearchInput";
 import { useCart } from "../../context/cart";
 import { toast } from "react-hot-toast";
+import CardComp from "../CardComp/CardComp";
 
 const HomePage = () => {
   const [auth, setAuth] = useAuth();
-  const [cart, setCart] = useCart();
+  const [cart, setCart] = useCart([]);
   const [products,setProducts]=useState([]);
   const [categories, setCategories]=useState([]);
   const [checked,setChecked]=useState([]);
@@ -104,6 +105,11 @@ getTotal()
     setChecked(all);
     setCategoryName(name);
   }
+//all items
+const allItems=()=>{
+  setChecked([]);
+}
+
   useEffect(()=>{
    if(!checked.length||!radio.length) getAllProducts();
     //eslint-disable-next-line
@@ -135,17 +141,18 @@ getTotal()
 {/* main data */}
 
   
-    <div className="text-[#fff] text-center flex flex-col  ">
+    <div className=" text-[#fff] text-center flex flex-col  ">
       <div className="px-4 sm:px-12">
       {/* filter by category */}
       <div className="flex flex-row justify-between mt-12 carousel">
+      <button className=" flex justify-center carousel-item p-2.5  mx-5 sm:mx-10 min-w-[30%] max-w-fit sm:min-w-[15%] sm:max-w-fit text-[#4d70ff] bg-white rounded-xl font-semibold hover:bg-slate-200" onClick={allItems} >All Items</button>
     {categories?.map((c)=>(
       <button className=" flex justify-center carousel-item p-2.5  mx-5 sm:mx-10 min-w-[30%] max-w-fit sm:min-w-[15%] sm:max-w-fit text-[#4d70ff] bg-white rounded-xl font-semibold hover:bg-slate-200" key={c._id} onClick={(e)=>handleFilter(e.target,c._id,c.name)
       }>{c.name}</button>
     ))}
     </div>
     {/* filter by price */}
-    <div className="hidden">
+    {/* <div className="hidden">
     <h1 className='m-3 mt-10 text-xl font-semibold '>Filter By Price</h1>
     <div className="flex flex-col items-center">
       <Radio.Group onChange={(e)=>setRadio(e.target.value)}>
@@ -156,11 +163,11 @@ getTotal()
         ))}
       </Radio.Group>
     </div>
-    </div>
+    </div> */}
     {/* reset filter */}
-    <div className="hidden mt-5" >
+    {/* <div className="hidden mt-5" >
       <button className="p-2 px-3 font-semibold btn-primary rounded-3xl " onClick={()=>window.location.reload()}>RESET FILTERS</button>
-    </div>
+    </div> */}
     </div>
         <div className="p-2 font-semibold lg:p-10 text-large">
           <div className="flex justify-start p-5">

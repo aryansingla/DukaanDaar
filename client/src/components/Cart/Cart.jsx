@@ -4,7 +4,7 @@ import { useCart } from "../../context/cart";
 import { useAuth } from "../../context/auth";
 import { useNavigate } from "react-router-dom";
 import { AiOutlineLeft , AiFillEdit } from "react-icons/ai";
-const Cart = () => {
+const Cart = ({openCart,setOpenCart}) => {
   const [auth, setAuth] = useAuth();
   const [cart, setCart] = useCart();
   const navigate = useNavigate();
@@ -21,17 +21,23 @@ const Cart = () => {
   };
   return (
     <>
-    
-      <div className="cartContainer text-[#fff] text-lg">
+    <div className="sm:w-[100%] sm:z-10 sm:absolute sm:flex sm:justify-end sm:backdrop-blur-lg">
+      <div className=" h-full sm:w-[35%] w-[100%] cartContainer text-[#fff] text-lg sm:bg-black">
 
         <div className="cartTitle bg-[#4d70ff] p-3 pt-4 rounded-b-[1rem] text-center">
-            <div className="TtitleItems flex w-[60%] justify-between">
-            <AiOutlineLeft className="mt-[0.35rem]" onClick={() => navigate("/")}/>
+          {/* big screen  */}
+            <div className="TtitleItems sm:flex hidden w-[60%] justify-between">
+            <AiOutlineLeft className=" cursor-pointer mt-[0.35rem]" onClick={() => setOpenCart(false)}/>
+            <h3 className="text-[#fff] font-semibold text-xl ">Checkout</h3>
+            </div>
+            {/* small screen  */}
+            <div className="TtitleItems flex w-[60%] justify-between sm:hidden">
+            <AiOutlineLeft className="cursor-pointer mt-[0.35rem]" onClick={() =>navigate("/")}/>
             <h3 className="text-[#fff] font-semibold text-xl ">Checkout</h3>
             </div>
         </div>
 
-        <div className="userName mt-3  pl-4">
+        <div className="pl-4 mt-3 userName">
             <h1 className="text-xl">{`Hey ${auth?.token && auth?.user?.name}`}</h1>
             <h4 className="text-lg">
             {cart.length > 1
@@ -41,10 +47,10 @@ const Cart = () => {
             </h4>
         </div>
 
-        <div className="cartItems mt-8">
+        <div className="mt-8 cartItems">
           {cart?.map((p) => (
             <div className="cartItem bg-[#c5c5ff] p-2 pt-3 mt-3 rounded-2xl ml-4 mr-4">
-              <div className="cartItemBox flex justify-around">
+              <div className="flex justify-around cartItemBox">
               <div className="itemImage min-w-[33%]  ">
                 <img
                   src={`${process.env.REACT_APP_API}/api/v1/product/product-photo/${p._id}`}
@@ -71,42 +77,15 @@ const Cart = () => {
           ))}
         </div>
 
-        <div className="cartTotal mt-16 p-5">
+        <div className="p-5 mt-16 cartTotal">
             <div className="delivery flex justify-between pr-3 text-[#b3adad]">
                 <div className="text-sm ">Delivery</div>
                 <div className="text-sm ">Free</div>
             </div>
-            <div className="totalPrice flex justify-between pr-3">
+            <div className="flex justify-between pr-3 totalPrice">
                 <div className="text-lg">Grand Total</div>
                 <div>₹ {cart.reduce((acc, curr) => acc + curr.price, 0)}</div>
             </div>
-            {auth?.user?.address ? (
-                <>
-                  <div className="address flex justify-between pr-3">
-                    <div className="text-lg">Address</div>
-                    <p> {auth?.user?.address}</p>
-                  </div>
-                  <div className="editAddress flex"  onClick={()=> navigate("/dashboard/user")}>
-                  <p className=" text-[#4d70ff]">
-                  Edit Address </p>
-                  <AiFillEdit className=" text-[#4d70ff] mt-1 pl-2 text-2xl"/>
-                  </div>
-
-                </>
-              ):(
-                <>
-                  {auth?.token ? (
-                  <p className=" text-[#4d70ff]" onClick={()=> navigate("/dashboard/user")}>Update Address</p>
-                  ) : (
-                    <p className=" text-[#4d70ff]" 
-                    onClick={()=> navigate("/login" , {
-                        state:"/cart",
-                    })}>
-                      Please Login to Checkout</p>
-                  )}
-                </>
-              )}
-               {auth?.token ? (
             <div className="buttonInCart w-[90%] m-auto mt-4">
                 <button
                 className="btn bg-[#4d70ff]  text-[#fff] border-none w-[100%] text-md"
@@ -114,15 +93,23 @@ const Cart = () => {
                 >
                 Make Order
                 </button>
+                {/* small screen  */}
                 <button
-                className="btn bg-[#c5c5ff] text-[#000] border-none w-[100%] text-md mt-3"
+                className="sm:hidden block btn bg-[#c5c5ff] text-[#000] border-none w-[100%] text-md mt-3"
                 onClick={() => navigate("/")}
                 >
                 Continue Shopping
                 </button>
+                {/* big screen  */}
+                <button
+                className="sm:block hidden btn bg-[#c5c5ff] text-[#000] border-none w-[100%] text-md mt-3"
+                onClick={() => {navigate("/");setOpenCart(false)}}
+                >
+                Continue Shopping
+                </button>
             </div>
-               ):""}
         </div>
+      </div>
       </div>
     </>
   );
