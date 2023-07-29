@@ -35,7 +35,7 @@ const handleSubmit = async (e)=>{
                 <div className='signupLeftTitle text-center text-[#ffffff] font-semibold mt-8'>
                     <p className='text-4xl signupText'>Signup</p>
                 </div>
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit} className='text-[#4d70ff]'>
                 <div className="inputDetails sm:mt-20 text-center" >
                         <input className="flex h-10 mt-4 w-6/12 m-auto border rounded-xl border-[#ffffff] bg-[#ffffff] py-2 px-3 text-md font-medium placeholder:text-[#4d70ff] focus:ring-1 focus:ring-gray-400 focus:ring-offset-1"
                             type="name"
@@ -83,9 +83,10 @@ const handleSubmit = async (e)=>{
                     </button>
                 </div>
                 <div className="newMember text-center sm:text-left w-[80%]  mt-4 m-auto flex">
-                <p className="mt-2 text-base text-gray-600 dark:text-gray-300"> Already a member?</p>
-                    <a href="/login"  className="font-medium text-[#5f7fff] transition-all duration-200 hover:underline mt-2 px-2">Login Here
-                    </a>
+                    <div className='flex m-auto'>
+                        <p className="mt-2 text-base text-gray-600 dark:text-gray-300"> Already a member?</p>
+                        <a href="/login"  className="font-medium text-[#5f7fff] transition-all duration-200 hover:underline mt-2 px-2">Login Here</a>
+                    </div>
                 </div>
             </div> 
             </form>

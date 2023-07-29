@@ -5,6 +5,7 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import CategoryForm from "../Form/CategoryForm";
 import { Modal } from "antd";
+import Navbar from "../Navbar/Navbar";
 const CreateCategory = () => {
   const [categories, setCategories] = useState([]);
   const [name, setName] = useState("");
@@ -91,6 +92,8 @@ const CreateCategory = () => {
   }, []);
 
   return (
+    <>
+    <Navbar/>
     <div className="text-[#fff] text-center">
       <h1 className="mt-10 text-2xl font-bold dashBoardTitle">
         Admin Dashboard
@@ -161,6 +164,7 @@ const CreateCategory = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

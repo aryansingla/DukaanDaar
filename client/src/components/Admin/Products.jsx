@@ -3,6 +3,7 @@ import AdminMenu from "./AdminMenu";
 import axios from "axios";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
+import Navbar from "../Navbar/Navbar";
 
 const Products = () => {
   //get all products
@@ -23,6 +24,8 @@ const Products = () => {
   }, []);
 
   return (
+    <>
+    <Navbar/>
     <div className="text-[#fff] text-center">
       <h1 className="mt-10 text-2xl font-bold dashBoardTitle">
         Admin Dashboard
@@ -65,6 +68,7 @@ const Products = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

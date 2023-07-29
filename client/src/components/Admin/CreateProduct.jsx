@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useSyncExternalStore } from "react";
-import "./CreateProduct.css";
 import axios from "axios";
 import toast from "react-hot-toast";
 import AdminMenu from "./AdminMenu";
 import { Select } from "antd";
 import { useNavigate } from "react-router-dom";
+import Navbar from "../Navbar/Navbar";
 const { Option } = Select;
 const CreateProduct = () => {
   const navigate = useNavigate();
@@ -62,6 +62,8 @@ const CreateProduct = () => {
     }
   };
   return (
+    <>
+    <Navbar/>
     <div className="text-[#fff] text-center">
       <h1 className="mt-10 text-2xl font-bold dashBoardTitle">
         Admin Dashboard
@@ -173,6 +175,7 @@ const CreateProduct = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

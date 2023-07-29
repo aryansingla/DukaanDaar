@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import "./CreateProduct.css";
 import axios from "axios";
 import toast from "react-hot-toast";
 import AdminMenu from "./AdminMenu";

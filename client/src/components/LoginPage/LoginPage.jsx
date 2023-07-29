@@ -77,6 +77,7 @@ const LoginPage = () => {
             </div>
           </form>
           <div className="newMember text-center sm:text-left w-[80%]  mt-4 m-auto flex">
+            <div className="flex m-auto">
             <p className="mt-2 text-base text-gray-600 dark:text-gray-300">
               {" "}
               Not a member?
@@ -87,6 +88,7 @@ const LoginPage = () => {
             >
               Create a free account
             </a>
+            </div>
           </div>
         </div>
         <div className="loginRight">
