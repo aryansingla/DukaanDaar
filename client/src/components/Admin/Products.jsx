@@ -57,7 +57,7 @@ const Products = () => {
                    <div className='flex justify-center mt-2 overflow-hidden rounded-3xl'><img src={`${process.env.REACT_APP_API}/api/v1/product/product-photo/${p._id}`} alt="Shoes" className=' m-2 sm:min-w-fit sm:max-w-fit sm:min-h-[100px] sm:max-h-[100px] min-w-[80px] max-w-[80px] min-h-[80px] max-h-[80px]' /></div>
                    <div className=" p-1 pt-2 pl-2 bg-[#C5C5FF] rounded-b-3xl">
                      <p className="m-0 -mt-1 font-medium text-left sm:mt-0">{p.name}</p>
-                     <p className='font-normal text-left'> $ {p.price}</p>
+                     <p className='font-normal text-left'> ₹ {p.price}</p>
                    
                    </div>
                    {/* </button> */}
