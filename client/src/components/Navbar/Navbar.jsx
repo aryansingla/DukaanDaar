@@ -5,9 +5,12 @@ import { FaShoppingCart, FaSpinner } from "react-icons/fa";
 import useCategory from "../../hooks/useCategory";
 import { useCart } from "../../context/cart";
 import {Badge} from "antd";
+import Cart from "../Cart/Cart";
+import logo from "../../Images/logo.png"
 const Navbar = () => {
     const [auth, setAuth] = useAuth();
     const [cart] = useCart();
+    const [openCart,setOpenCart]=useState(false);
     const categories = useCategory(); 
     const navigate = useNavigate();
     const handleLogOut = () => {
@@ -22,13 +25,16 @@ const Navbar = () => {
       const onHamClick = () => {
         setDisplay(!display);
       };
+      const handleCart=()=>{
+        setOpenCart(true);
+      }
   return (
     <>
     {!auth.user ? (
         <div>
           <nav className="relative flex items-center justify-between px-4 py-4 sm:px-8 ">
             <a className="flex justify-start " href="#">
-              <img className="w-1/2 sm:w-1/3" src="logo.png" alt="logo" />
+              <img className="w-1/2 sm:w-1/3" src={logo} alt="logo" />
               <div className="hidden sm:ml-2 sm:flex sm:flex-col sm:justify-center">
                 <div className="text-xl font-bold tracking-wide text-white">
                   Dukaan
@@ -144,7 +150,7 @@ const Navbar = () => {
             <div>
               <nav className="relative flex items-center justify-between px-8 py-4 ">
                 <a className="flex justify-start " href="#">
-                  <img className="w-1/2 sm:w-1/3" src="logo.png" alt="logo" />
+                  <img className="w-1/2 sm:w-1/3" src={logo} alt="logo" />
                   <div className="hidden ml-2 sm:flex sm:flex-col sm:justify-center">
                     <div className="text-xl font-bold tracking-wide text-white">
                       Dukaan
@@ -155,6 +161,7 @@ const Navbar = () => {
                   </div>
                 </a>
                 <div className="md:hidden">
+                  
                   <button
                     onClick={onHamClick}
                     className="flex items-center p-3 text-white navbar-burger"
@@ -200,10 +207,11 @@ const Navbar = () => {
                     </NavLink>
                   </li>
                   <li>
-                    <NavLink to="/cart">
+                    <NavLink to="#">
                       <button
                         className="text-white text-xl font-medium px-4 py-2 bg-[#4d70ff] hover:bg-[#6581f2] rounded-xl -mr-3"
                         type="submit"
+                        onClick={handleCart}
                       >
                         <div className="flex items-center ">
                           <div className="pr-2">Cart {cart?.length}</div>
@@ -214,6 +222,9 @@ const Navbar = () => {
                   </li>
                 </ul>
               </nav>
+              <div className="hidden sm:block">
+               { openCart && <Cart openCart={openCart} setOpenCart={setOpenCart}/>}
+              </div>
               {/* phone */}
               {display && (
                 <nav className="block md:hidden  absolute bg-[#070d23] bg-opacity-90 w-full text-white">

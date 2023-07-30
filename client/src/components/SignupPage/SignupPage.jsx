@@ -12,6 +12,8 @@ const[password,setPassword]=useState('');
 const[address,setAddress]=useState('');
 const[phone,setPhone]=useState('');
 const[answer,setAnswer]=useState('');
+
+// form function
 const handleSubmit = async (e)=>{
     e.preventDefault();
     try {

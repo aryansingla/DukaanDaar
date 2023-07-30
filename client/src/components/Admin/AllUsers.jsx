@@ -2,9 +2,12 @@ import React from 'react'
 import "./AllUsers.css"
 import AdminMenu from './AdminMenu'
 import { useAuth } from '../../context/auth'
+import Navbar from '../Navbar/Navbar'
 const AllUsers = () => {
-    const [auht] = useAuth();
+    const [auth] = useAuth();
   return (
+    <>
+    <Navbar/>
     <div className='text-[#fff] text-center'>
     <h1 className='dashBoardTitle font-bold text-2xl mt-10'>Admin Dashboard</h1>
     <div className="dashboardContent flex">
@@ -16,6 +19,7 @@ const AllUsers = () => {
         </div>
     </div>
 </div>  
+</>
   )
 }
 

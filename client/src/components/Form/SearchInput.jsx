@@ -30,12 +30,12 @@ const SearchInput = () => {
          />
          <button type='submit' className="py-3 px-5 bg-[#4d70ff] rounded-r-xl hover:cursor-pointer hover:bg-[#6581f2]"><TbSearch  style={{color: "white", backgroundColor:"#4d70ff"}}/></button>
      </div>
-     <div className="sm:hidden w-[45%] mt-8 flex items-center justify-center m-auto">
+     <div className="sm:hidden w-[70%] mt-8 flex items-center justify-center m-auto">
     
     <input
       type="search"
       className=" w-full py-1.5 pl-3 pr-4 text-sm font-semibold placeholder-[#4d70ff]  bg-gray-100 dark:bg-gray-800 rounded-l-xl focus:outline-none focus:bg-white focus:text-gray-900"
-      placeholder="Search" 
+      placeholder="Search Here..." 
       value={values.keyword}
       onChange={(e)=>setValues({...values, keyword:e.target.value})}
       />
