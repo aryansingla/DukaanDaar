@@ -165,10 +165,10 @@ getTotal()
         <div className="p-2 font-semibold lg:p-10 text-large">
           <div className="flex justify-start p-5">
             {(!checked.length)? <h1 className='text-3xl font-semibold '>All Items</h1>: <h1 className='text-3xl font-semibold '>{categoryName}</h1>}</div>
-            <div className='flex flex-row lg:pl-10 lg:justify-evenly carousel '>
+            <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 lg:pl-10 lg:justify-evenly carousel'>
                 {products?.map((p)=>(
                   <button>
-                <div className=" relative lg:max-w-[12vw] lg:min-w-[12vw]  lg:max-h-fit lg:min-h-fit sm:max-w-[24vw] sm:min-w-[24vw]  sm:max-h-fit sm:min-h-fit max-w-[44vw] min-w-[44vw]  max-h-fit min-h-fit m-3 text-black rounded-3xl bg-base-100 ">
+                <div className=" relative lg:max-w-[12vw] lg:min-w-[12vw]  lg:max-h-fit lg:min-h-fit sm:max-w-[24vw] sm:min-w-[24vw]  sm:max-h-fit sm:min-h-fit max-w-[44vw] min-w-[44vw]  max-h-fit min-h-fit m-3 text-black rounded-3xl bg-white ">
               { 
               //  !add && 
                 <div onClick={addFunc} className="flex justify-end ">
@@ -189,7 +189,7 @@ getTotal()
                 <div className=" p-1 pt-2 pl-2 bg-[#C5C5FF] rounded-b-3xl">
                   <p className="m-0 -mt-1 font-medium text-left sm:mt-0">{p.name}</p>
                   {/* <p className=''>{p.description.substring(0,10)}...</p> */}
-                  <p className='font-normal text-left'> $ {p.price}</p>
+                  <p className='font-normal text-left'> ₹ {p.price}</p>
                 
                 </div>
                 </button>
