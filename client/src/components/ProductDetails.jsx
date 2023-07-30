@@ -12,7 +12,7 @@ const ProductDetails = () => {
   const [cart, setCart] = useCart();
   const [product, setProduct] = useState({});
   const [relatedProducts, setRelatedProducts] = useState([]);
-  const navigate=useNavigate();
+  const navigate = useNavigate();
   //initalProduct details
   useEffect(() => {
     if (params?.slug) getProduct();
@@ -42,11 +42,11 @@ const ProductDetails = () => {
   };
   return (
     <>
-        <Navbar/>
+      <Navbar />
 
-{/* Search */}
-    <SearchInput/>
-    {/* main data */}
+      {/* Search */}
+      <SearchInput />
+      {/* main data */}
       <div className="flex flex-col text-base text-white sm:flex-row">
         <div className="sm:w-[30%] sm:m-5 mx-10 mt-5 flex justify-center">
           <img
@@ -62,31 +62,44 @@ const ProductDetails = () => {
           <h6>Price : {product.price}</h6>
           <h6>Category : {product.category?.name}</h6>
           <button
-          onClick={()=>{
-            setCart([...cart,product]);
-            localStorage.setItem("cart",JSON.stringify([...cart,product]));
-            toast.success("item added to cart")
-          }}
-           className="w-40 p-2 text-base sm:px-3 sm:py-1 btn-secondary rounded-3xl">
+            onClick={() => {
+              setCart([...cart, product]);
+              localStorage.setItem("cart", JSON.stringify([...cart, product]));
+              toast.success("item added to cart");
+            }}
+            className="w-40 p-2 text-base sm:px-3 sm:py-1 btn-secondary rounded-3xl"
+          >
             Add to cart
           </button>
         </div>
       </div>
       <div className="mt-5 text-lg text-white">
-        <div className="flex justify-center text-xl text-[#4d70ff]"><h1>Similar Products</h1></div>
+        <div className="flex justify-center text-xl text-[#4d70ff]">
+          <h1>Similar Products</h1>
+        </div>
         {relatedProducts.length < 1 && <p>No Similar Products Found</p>}
-        <div className='flex flex-row lg:pl-10 lg:justify-evenly carousel '>
+        <div className="flex flex-row lg:pl-10 lg:justify-evenly carousel ">
           {relatedProducts?.map((p) => (
-<div className=" relative lg:max-w-[12vw] lg:min-w-[12vw]  lg:max-h-fit lg:min-h-fit sm:max-w-[24vw] sm:min-w-[24vw]  sm:max-h-fit sm:min-h-fit max-w-[44vw] min-w-[44vw]  max-h-fit min-h-fit m-3 text-black rounded-3xl bg-base-100 ">
-<button className="w-full" onClick={()=>navigate(`/product/${p.slug}`)}>
-<div className='flex justify-center mt-2 overflow-hidden rounded-3xl'><img src={`${process.env.REACT_APP_API}/api/v1/product/product-photo/${p._id}`} alt="Shoes" className=' m-2 sm:min-w-fit sm:max-w-fit sm:min-h-[100px] sm:max-h-[100px] min-w-[80px] max-w-[80px] min-h-[80px] max-h-[80px]' /></div>
-<div className=" p-1 pt-2 pl-2 bg-[#C5C5FF] rounded-b-3xl">
-  <p className="m-0 -mt-1 font-medium text-left sm:mt-0">{p.name}</p>
-  <p className='font-normal text-left'> $ {p.price}</p>
-
-</div>
-</button>
-</div>
+            <div className=" relative lg:max-w-[12vw] lg:min-w-[12vw]  lg:max-h-fit lg:min-h-fit sm:max-w-[24vw] sm:min-w-[24vw]  sm:max-h-fit sm:min-h-fit max-w-[44vw] min-w-[44vw]  max-h-fit min-h-fit m-3 text-black rounded-3xl bg-white ">
+              <button
+                className="w-full"
+                onClick={() => navigate(`/product/${p.slug}`)}
+              >
+                <div className="flex justify-center mt-2 overflow-hidden rounded-3xl">
+                  <img
+                    src={`${process.env.REACT_APP_API}/api/v1/product/product-photo/${p._id}`}
+                    alt="Shoes"
+                    className=" m-2 sm:min-w-fit sm:max-w-fit sm:min-h-[100px] sm:max-h-[100px] min-w-[80px] max-w-[80px] min-h-[80px] max-h-[80px]"
+                  />
+                </div>
+                <div className=" p-1 pt-2 pl-2 bg-[#C5C5FF] rounded-b-3xl">
+                  <p className="m-0 -mt-1 font-medium text-left sm:mt-0">
+                    {p.name}
+                  </p>
+                  <p className="font-normal text-left"> ₹ {p.price}</p>
+                </div>
+              </button>
+            </div>
           ))}
         </div>
       </div>
