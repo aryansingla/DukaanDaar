@@ -81,24 +81,8 @@ const HomePage = () => {
       console.log(error);
     }
   };
-  useEffect(() => {
-    if (page === 1) return;
-    loadMore();
-  }, [page]);
-  //load more
-  const loadMore = async () => {
-    try {
-      setLoading(true);
-      const { data } = await axios.get(
-        `${process.env.REACT_APP_API}/api/v1/product/product-list/${page}`
-      );
-      setLoading(false);
-      setProducts([...products, ...data?.products]);
-    } catch (error) {
-      console.log(error);
-      setLoading(false);
-    }
-  };
+ 
+ 
 
   //filter by cat
   const handleFilter = (value, id, name) => {
@@ -117,11 +101,11 @@ const HomePage = () => {
   };
 
   useEffect(() => {
-    if (!checked.length || !radio.length) getAllProducts();
+    if (!checked.length ) getAllProducts();
     //eslint-disable-next-line
-  }, [checked.length, radio.length]);
+  }, [checked.length]);
   useEffect(() => {
-    if (checked.length || radio.length) filterProduct();
+    if (checked.length) filterProduct();
   }, [checked, radio]);
 
   //get filtered product

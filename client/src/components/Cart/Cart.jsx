@@ -27,7 +27,7 @@ const Cart = ({openCart,setOpenCart}) => {
     }
   };
 
-  // get payment gateway token
+  // get payment gateway token 
   const getToken = async () => {
     try {
       const { data } = await axios.get(
@@ -102,6 +102,7 @@ const Cart = ({openCart,setOpenCart}) => {
                 <div className="itemDetails text-[black] min-w-[33%]">
                   <h1>{p.name}</h1>
                   <h3 className="mt-[-10px]"> ₹ {p.price}</h3>
+                  <h3 className="mt-[-10px]"> Quantity : {p.quantity}</h3>
                 </div>
                 <div className="removeButton ">
                   <button
