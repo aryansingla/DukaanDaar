@@ -17,7 +17,8 @@ const[answer,setAnswer]=useState('');
 const handleSubmit = async (e)=>{
     e.preventDefault();
     try {
-        const res = await axios.post(`${process.env.REACT_APP_API}/api/v1/auth/signup`,{name,email,password,address,phone,answer});
+        const res = await axios.post(`${process.env.REACT_APP_API}/api/v1/auth/signup`,
+        {name,email,password,address,phone,answer});
         if(res && res.data.success){
             toast.success(res.data.message);
             navigate('/login');
@@ -76,12 +77,6 @@ const handleSubmit = async (e)=>{
                         <button className=" signupBt mt-4 rounded-xl bg-[#4d70ff] px-5 w-4/12 py-1.5 text-base font-semibold leading-7 text-white hover:bg-[#6581f2] " type="submit">
                             Sign Up
                             </button>
-                {/* <div className='SignInGoogle'>
-                    <button className="googleBtn inline-flex justify-evenly rounded-xl items-center w-6/12 mt-16 bg-[#ffffff] sm:px-3.5 py-1.5 text-base font-semibold leading-7 text-[#000]">
-                        Sign up with Google
-                        <img src="./googleLogo.png" alt="google logo" />
-                    </button>
-                </div> */}
                 <div className="newMember text-center sm:text-left w-[80%]  mt-4 m-auto flex">
                     <div className='flex m-auto'>
                         <p className="mt-2 text-base text-gray-600 dark:text-gray-300"> Already a member?</p>

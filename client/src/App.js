@@ -44,7 +44,6 @@ function App() {
           <BrowserRouter>
             <Routes>
               <Route path="/" element={<HomePage />} />
-              <Route path="intro" element={<IntroPage />} />
               <Route path="/product/:slug" element={<ProductDetails />} />
               <Route path="/search" element={<Search />} />
               <Route path="/dashboard" element={<PrivateRoute />}>

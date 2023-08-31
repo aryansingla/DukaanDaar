@@ -1,7 +1,7 @@
 import { useState,useEffect,useContext,createContext } from "react";
 import axios from "axios";
 const AuthContext = createContext()
-// i have removed auth from dependency array because it will cause infinite loop it is howing error in console but in video he has written auth in dependency array
+// i have removed auth from dependency array because it will cause infinite loop it is showing error in console but in video he has written auth in dependency array
 const AuthProvider = ({children})=>{
     const[auth,setAuth]=useState({
         user:null,
@@ -9,6 +9,7 @@ const AuthProvider = ({children})=>{
     })
     //default axios
     axios.defaults.headers.common["Authorization"] = auth?.token;
+    // after refresh data should not be gone , so we will use useEffect and data of auth will be fetched frfom localstorage
     useEffect(()=>{
         const data = localStorage.getItem("auth");
         if(data){

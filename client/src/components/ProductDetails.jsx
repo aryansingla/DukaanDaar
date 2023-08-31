@@ -88,7 +88,7 @@ const ProductDetails = () => {
                 <div className="flex justify-center mt-2 overflow-hidden rounded-3xl">
                   <img
                     src={`${process.env.REACT_APP_API}/api/v1/product/product-photo/${p._id}`}
-                    alt="Shoes"
+                    alt="product"
                     className=" m-2 sm:min-w-fit sm:max-w-fit sm:min-h-[100px] sm:max-h-[100px] min-w-[80px] max-w-[80px] min-h-[80px] max-h-[80px]"
                   />
                 </div>

@@ -1,7 +1,7 @@
 import React ,{ useState,useEffect}from 'react';
 import ClipLoader from 'react-spinners/ClipLoader';
 import { useNavigate , useLocation } from 'react-router-dom';
-function Spinner({path="login"}) {
+function   Spinner({path="login"}) {
     const[count,setCount]=useState(3);
     const navigate = useNavigate();
     const location = useLocation();

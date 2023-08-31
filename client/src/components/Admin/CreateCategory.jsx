@@ -9,7 +9,7 @@ import Navbar from "../Navbar/Navbar";
 const CreateCategory = () => {
   const [categories, setCategories] = useState([]);
   const [name, setName] = useState("");
-  const [visible, setVisible] = useState(false);
+  const [visible,   setVisible] = useState(false);
   const [selected, setSelected] = useState(null);
   const [updatedName, setUpdatedName] = useState("");
   const handleSubmit = async (e) => {
@@ -153,7 +153,7 @@ const CreateCategory = () => {
           <Modal
             onCancel={() => setVisible(false)}
             footer={null}
-            visible={visible}
+            open={visible}
           >
             <CategoryForm
               value={updatedName}

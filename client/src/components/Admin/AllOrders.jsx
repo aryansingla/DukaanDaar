@@ -53,67 +53,6 @@ const AllOrders = () => {
           <div className="dashmenu p-10">
             <AdminMenu />
           </div>
-          {/* <div className="usersContent p-10 font-semibold text-large w-full">
-            <h1>All Orders</h1>
-            <div className="table m-auto w-full">
-              <table className="table w-[30%] sm:w-full m-auto ">
-                <thead className="">
-                  <tr>
-                    <th>#</th>
-                    <th>Status</th>
-                    <th>Buyer</th>
-                    <th>Date</th>
-                    <th>Payment</th>
-                    <th>Quantity</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {orders?.map((o, i) => {
-                    return (
-                      <>
-                        <tr>
-                          <td className="bg-white text-black">{i + 1}</td>
-                          <td className="bg-white text-black">
-                            <Select bordered={false}
-                             onChange={(value)=> handleChange(o._id,value)} defaultValue={o?.status}>
-                                    {status.map((s,i)=>(
-                                        <Option key={i} value={s}>{s}</Option>
-                                    ))}
-                            </Select>
-                          </td>
-                          <td className="bg-white text-black">{o?.buyer?.name}</td>
-                          <td className="bg-white text-black">{moment(o?.createAt).fromNow()}</td>
-                          <td className="bg-white text-black">{o?.payment?.success ? "Success" : "Failed"}</td>
-                          <td className="bg-white text-black">{o?.products?.length}</td>
-                        </tr>
-                        <div className="container w-full">
-                          {o?.products?.map((p, i) => (
-                            <div className="cartItem bg-[#c5c5ff] p-2 pt-3 mt-3 rounded-2xl ml-4 mr-4 w-[100%]">
-                              <div className="cartItemBox flex justify-around">
-                                <div className="itemImage w-[50%]  ">
-                                  <img
-                                    src={`${process.env.REACT_APP_API}/api/v1/product/product-photo/${p._id}`}
-                                    alt="Shoes"
-                                    className="md:min-w-[100px] md:max-w-[100px] md:min-h-[100px] md:max-h-[100px]
-                            min-w-[80px] max-w-[80px] min-h-[80px] max-h-[80px]"
-                                  />
-                                </div>
-                                <div className="itemDetails text-[black] w-[50%]">
-                                  <h1>{p.name}</h1>
-                                  <h3 className="mt-[-10px]"> ₹ {p.price}</h3>
-                                </div>
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-                      </>
-                    );
-                  })}
-                </tbody>
-              </table>
-            </div>
-          </div> */}
-
           <div class="overflow-auto rounded-lg shadow hidden md:block w-full">
             <table class="w-full">
               <thead class=" border-b-2 border-gray-200">

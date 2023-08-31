@@ -68,12 +68,6 @@ const LoginPage = () => {
               >
                 Log In
               </button>
-              {/* <div className="SignInGoogle">
-                <button className="googleBtn inline-flex justify-evenly rounded-xl items-center w-6/12 mt-16 bg-[#ffffff] sm:px-3.5 py-1.5 text-base font-semibold leading-7 text-[#000]">
-                  Sign in with Google
-                  <img src="./googleLogo.png" alt="google logo" />
-                </button>
-              </div> */}
             </div>
           </form>
           <div className="newMember text-center sm:text-left w-[80%]  mt-4 m-auto flex">
